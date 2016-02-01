@@ -1,3 +1,25 @@
+"""
+Printing helper functions, for pretty printing/formatting of data and more
+"""
+
+def to_even_columns(data, headers=None):
+    """
+    Nicely format the 2-dimensional list into evenly spaced columns
+    """
+    result = ''
+    col_width = max(len(word) for row in data for word in row) + 2  # padding
+    if headers:
+        header_width = max(len(word) for row in headers for word in row) + 2
+        if header_width > col_width:
+            col_width = header_width
+
+        result += "".join(word.ljust(col_width) for word in headers) + "\n"
+        result += '-' * col_width * len(headers) + "\n"
+
+    for row in data:
+        result += "".join(word.ljust(col_width) for word in row) + "\n"
+    return result
+
 
 def to_smart_columns(data, headers=None, padding=2):
     """
@@ -42,5 +64,3 @@ def to_smart_columns(data, headers=None, padding=2):
             col_counter += 1
         result += "\n"
     return result
-
-
