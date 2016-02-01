@@ -13,7 +13,7 @@ from os import path
 here = path.abspath(path.dirname(__file__))
 
 # Get the long description from the relevant file
-with open(path.join(here, 'README.md'), encoding='utf-8') as f:
+with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
@@ -26,7 +26,7 @@ setup(
     # third part for minor release
     # second when api changes
     # first when it becomes stable someday
-    version='0.1',
+    version='0.1.1',
     author='Michiel Scholten',
     author_email='michiel@diginaut.net',
 
@@ -37,6 +37,7 @@ setup(
     # work unless the specific versions are used
     #install_requires=['requests>=2.9.1', 'pytz>=2015.7', 'xmltodict', 'future'],
 
+    packages=['utilkit'],
     py_modules=['utilkit'],
     classifiers=[
         "Topic :: Software Development :: Libraries",
