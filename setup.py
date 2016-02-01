@@ -26,7 +26,7 @@ setup(
     # third part for minor release
     # second when api changes
     # first when it becomes stable someday
-    version='0.1.1',
+    version='0.1.2',
     author='Michiel Scholten',
     author_email='michiel@diginaut.net',
 
@@ -38,7 +38,7 @@ setup(
     #install_requires=['requests>=2.9.1', 'pytz>=2015.7', 'xmltodict', 'future'],
 
     packages=['utilkit'],
-    py_modules=['utilkit'],
+    #py_modules=['utilkit'],
     classifiers=[
         "Topic :: Software Development :: Libraries",
         "Development Status :: 5 - Production/Stable",
