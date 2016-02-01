@@ -1,3 +1,7 @@
+"""
+String/unicode helper functions
+"""
+
 def safe_unicode(obj, *args):
     """ return the unicode representation of obj """
     try:
@@ -14,4 +18,3 @@ def safe_str(obj):
     except UnicodeEncodeError:
         # obj is unicode
         return unicode(obj).encode('unicode_escape')
-

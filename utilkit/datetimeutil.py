@@ -1,15 +1,15 @@
 """
 datetime helper functions, from formatting to timezone magic and more
 """
-import datetime
+from datetime import datetime, timedelta
 from time import mktime
 from pytz.tzinfo import StaticTzInfo
 
 
 # Formatting
 
-def unix_to_string(timestamp):
-    return datetime.datetime.fromtimestamp(int(timestamp)).strftime('%Y-%m-%d %H:%M:%S')
+def unix_to_string(timestamp, dt_format='%Y-%m-%d %H:%M:%S'):
+    return datetime.fromtimestamp(int(timestamp)).strftime(dt_format)
 
 
 def unix_to_python(timestamp):
@@ -20,16 +20,31 @@ def unix_to_python(timestamp):
     if int(timestamp) == 0:
         return None
     else:
-        return datetime.datetime.utcfromtimestamp(float(timestamp))
+        return datetime.utcfromtimestamp(float(timestamp))
 
 
-def datetime_to_string(timestamp):
-    return timestamp.strftime('%Y-%m-%d %H:%M:%S')
+def datetime_to_string(timestamp, dt_format='%Y-%m-%d %H:%M:%S'):
+    """
+    Format datetime object to string
+    """
+    return timestamp.strftime(dt_format)
+
+
+def simple_time(value):
+    """
+    Format a datetime or timedelta object to a string of format HH:MM
+    """
+    if isinstance(value, timedelta):
+        return ':'.join(str(value).split(':')[:2])
+    return datetime_to_string(value, '%H:%M')
 
 
 # Timezone helpers
 
 def is_dst(zonename):
+    """
+    Find out whether it's Daylight Saving Time in this timezone
+    """
     tz = pytz.timezone(zonename)
     now = pytz.utc.localize(datetime.utcnow())
     return now.astimezone(tz).dst() != timedelta(0)
