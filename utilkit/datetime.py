@@ -1,4 +1,5 @@
-
+import datetime
+from time import mktime
 
 def safe_unicode(obj, *args):
     """ return the unicode representation of obj """
