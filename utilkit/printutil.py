@@ -64,3 +64,14 @@ def to_smart_columns(data, headers=None, padding=2):
             col_counter += 1
         result += "\n"
     return result
+
+
+def progress_bar(items_total, items_progress, columns=40, base_char='.', progress_char='#'):
+    """
+    Print a progress bar of width `columns`
+    """
+    bins_total = int(items_total / columns) + 1
+    bins_progress = int((float(items_progress) / float(items_total)) * bins_total) + 1
+    progress = progress_char * bins_progress
+    progress += base_char * (bins_total - bins_progress)
+    return progress
