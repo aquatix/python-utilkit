@@ -77,6 +77,7 @@ def progress_bar(items_total, items_progress, columns=40, base_char='.', progres
     progress += base_char * (bins_total - bins_progress)
     if percentage:
         progress_percentage = float(items_progress) / float(items_total) * 100
+        # Round the percentage to two decimals
         postfix = ' ' + str(round(progress_percentage, 2)) + '% ' + postfix
     progress += postfix
     return progress
