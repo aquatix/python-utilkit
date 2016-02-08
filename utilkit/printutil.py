@@ -1,6 +1,7 @@
 """
 Printing helper functions, for pretty printing/formatting of data and more
 """
+import datetimeutil
 
 def to_even_columns(data, headers=None):
     """
@@ -81,3 +82,29 @@ def progress_bar(items_total, items_progress, columns=40, base_char='.', progres
         postfix = ' ' + str(round(progress_percentage, 2)) + '% ' + postfix
     progress += postfix
     return progress
+
+
+def x_vs_y(collection_x, collection_y, title_x=None, title_y=None, width=43):
+    """
+    Print a histogram with bins for x to the left and bins of y to the right
+    """
+    data = {}
+    for item in collection_x:
+        #print item[0:-1]
+        #print item[-1]
+        label = datetimeutil.tuple_to_string(item[0:-1])
+        data[label] = {'label': label, 'x': item[-1], 'y': 0}
+    for item in collection_y:
+        #print item
+        label = datetimeutil.tuple_to_string(item[0:-1])
+        try:
+            data[label]['y'] = item[-1]
+        except KeyError:
+            data[label] = {'label': label, 'x': 0, 'y': item[-1]}
+
+    # TODO: sort keys
+
+    result = []
+    for item in data:
+        result.append([item, str(data[item]['x']) + '|' + str(data[item]['y'])])
+    return result

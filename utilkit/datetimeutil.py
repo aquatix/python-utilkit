@@ -40,6 +40,18 @@ def simple_time(value):
     return datetime_to_string(value, '%H:%M')
 
 
+def tuple_to_string(date_tuple):
+    """
+    Create a yyyy-mm(-dd) string from a tuple containing (yyyy, m) (or one with the day too)
+    """
+    if len(date_tuple) == 2:
+        # It's yyyy-mm
+        return str(date_tuple[0]).zfill(4) + '-' + str(date_tuple[1]).zfill(2)
+    elif len(date_tuple) == 3:
+        # It's yyyy-mm-dd
+        return str(date_tuple[0]).zfill(4) + '-' + str(date_tuple[1]).zfill(2) + '-' + str(date_tuple[2]).zfill(2)
+
+
 # Timezone helpers
 
 def is_dst(zonename):
