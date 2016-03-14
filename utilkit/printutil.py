@@ -84,27 +84,64 @@ def progress_bar(items_total, items_progress, columns=40, base_char='.', progres
     return progress
 
 
-def x_vs_y(collection_x, collection_y, title_x=None, title_y=None, width=43):
+def merge_x_y(collection_x, collection_y, filter_none=False):
     """
-    Print a histogram with bins for x to the left and bins of y to the right
+    Merge two lists, creating a dictionary with key `label` and a set x and y
     """
     data = {}
     for item in collection_x:
         #print item[0:-1]
         #print item[-1]
         label = datetimeutil.tuple_to_string(item[0:-1])
+        if filter_none and label == 'None-None':
+            continue
         data[label] = {'label': label, 'x': item[-1], 'y': 0}
     for item in collection_y:
         #print item
         label = datetimeutil.tuple_to_string(item[0:-1])
+        if filter_none and label == 'None-None':
+            continue
         try:
             data[label]['y'] = item[-1]
         except KeyError:
             data[label] = {'label': label, 'x': 0, 'y': item[-1]}
 
-    # TODO: sort keys
+    # Keys are not sorted
+    return data
 
-    result = []
+
+def get_max_x_y(data):
+    max = 0
     for item in data:
-        result.append([item, str(data[item]['x']) + '|' + str(data[item]['y'])])
+        if data[item]['x'] > max:
+            max = data[item]['x']
+        if data[item]['y'] > max:
+            max = data[item]['y']
+    return max
+
+
+def x_vs_y(collection_x, collection_y, title_x=None, title_y=None, width=43, filter_none=False):
+    """
+    Print a histogram with bins for x to the left and bins of y to the right
+    """
+    data = merge_x_y(collection_x, collection_y, filter_none)
+
+    max_value = get_max_x_y(data)
+    bins_total = int(float(max_value) / width) + 1
+
+    if title_x != None and title_y != None:
+        headers = [title_x, title_y]
+    else:
+        headers = None
+    result = []
+    # Sort keys
+    for item in sorted(data):
+        #result.append([item, str(data[item]['x']) + '|' + str(data[item]['y'])])
+        bins_x = int((float(data[item]['x']) / float(max_value)) * bins_total) + 1
+        bins_y = int((float(data[item]['y']) / float(max_value)) * bins_total) + 1
+        print bins_x
+        print bins_y
+        #result.append([item, str(data[item]['x']), str(data[item]['y'])])
+        result.append([item, '*' * bins_x, '*' * bins_y])
+    result = to_smart_columns(result, headers=headers)
     return result
