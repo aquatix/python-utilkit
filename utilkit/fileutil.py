@@ -3,6 +3,7 @@ File/directory helper functions
 Copying of file trees, creating directories, reading files and more
 """
 import os
+import datetime
 import shutil
 
 
@@ -35,6 +36,19 @@ def copytree(src, dst, symlinks = False, ignore = None):
             copytree(s, d, symlinks, ignore)
         else:
             shutil.copy2(s, d)
+
+
+def archive_if_exists(filename):
+    """
+    Move `filename` out of the way, archiving it by appending the current datetime
+    Can be a file or a directory
+    """
+    if os.path.exists(filename):
+        current_time = datetime.datetime.now()
+        dt_format = '%Y-%m-%dT%H:%M:%S%z'
+        timestamp = current_time.strftime(dt_format)
+        dst = filename + '_' + timestamp
+        shutil.move(filename, dst)
 
 
 def ensure_dir_exists(f):
