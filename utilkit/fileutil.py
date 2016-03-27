@@ -51,11 +51,16 @@ def archive_if_exists(filename):
         shutil.move(filename, dst)
 
 
-def ensure_dir_exists(f):
+def ensure_dir_exists(f, fullpath=False):
     """
-    Ensure the existence of the parent directory of f
+    Ensure the existence of the (parent) directory of f
     """
-    d = os.path.dirname(f)
+    if fullpath == False:
+        # Get parent directory
+        d = os.path.dirname(f)
+    else:
+        # Create the full path
+        d = f
     if not os.path.exists(d):
         os.makedirs(d)
 
