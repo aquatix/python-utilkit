@@ -65,6 +65,17 @@ def ensure_dir_exists(f, fullpath=False):
         os.makedirs(d)
 
 
+def list_files(dirname):
+    """
+    List all files in directory `dirname`
+    """
+    f = []
+    for (dirpath, dirnames, filenames) in os.walk(dirname):
+        f.extend(filenames)
+        break
+    return f
+
+
 def get_file_contents(filename):
     """
     Read file contents from file `filename`
