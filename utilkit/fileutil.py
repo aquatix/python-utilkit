@@ -65,14 +65,22 @@ def ensure_dir_exists(f, fullpath=False):
         os.makedirs(d)
 
 
-def list_files(dirname):
+def list_files(dirname, extension=None):
     """
-    List all files in directory `dirname`
+    List all files in directory `dirname`, option to filter on file extension
     """
     f = []
     for (dirpath, dirnames, filenames) in os.walk(dirname):
         f.extend(filenames)
         break
+    if extension != None:
+        # Filter on extension
+        filtered = []
+        for filename in f:
+            fn, ext = os.path.splitext(filename)
+            if ext.lower() == '.' + extension.lower():
+                filtered.append(filename)
+        f = filtered
     return f
 
 
