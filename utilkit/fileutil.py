@@ -101,6 +101,10 @@ def get_file_contents(filename):
 
 
 def yaml_ordered_load(stream, Loader=yaml.Loader, object_pairs_hook=OrderedDict):
+    """
+    Load yaml mappings into OrderedDict instead of the unordered vanilla dict type
+    source: http://stackoverflow.com/questions/5121931/in-python-how-can-you-load-yaml-mappings-as-ordereddicts
+    """
     class OrderedLoader(Loader):
         pass
     def construct_mapping(loader, node):
