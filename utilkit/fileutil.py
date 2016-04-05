@@ -5,6 +5,8 @@ Copying of file trees, creating directories, reading files and more
 import os
 import datetime
 import shutil
+import yaml
+from collections import OrderedDict
 
 
 def copytree(src, dst, symlinks = False, ignore = None):
@@ -96,3 +98,16 @@ def get_file_contents(filename):
         # File not found, return None
         pass
     return data
+
+
+def yaml_ordered_load(stream, Loader=yaml.Loader, object_pairs_hook=OrderedDict):
+    class OrderedLoader(Loader):
+        pass
+    def construct_mapping(loader, node):
+        loader.flatten_mapping(node)
+        return object_pairs_hook(loader.construct_pairs(node))
+    OrderedLoader.add_constructor(
+        yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG,
+        construct_mapping)
+    return yaml.load(stream, OrderedLoader)
+
