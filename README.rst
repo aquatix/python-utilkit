@@ -6,6 +6,8 @@ Some useful functions and usability that should be shared between your apps.
 
 |PyPI version| |PyPI downloads| |PyPI license|
 
+Repo: `<https://github.com/aquatix/python-utilkit/>`_
+
 Installation
 ------------
 
