@@ -1,1 +1,3 @@
-pytz==2015.7
+future
+pytz
+requests
