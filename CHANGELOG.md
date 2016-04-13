@@ -1,9 +1,4 @@
-=========
-Changelog
-=========
-
-v0.3.0
-------
+## v0.3.0 (unreleased)
 
 2016-04-??
 
@@ -11,8 +6,7 @@ v0.3.0
 - Ordered yaml loader (uses OrderedDict for output)
 
 
-v0.2.0
-------
+## v0.2.0
 
 2016-03-27
 
@@ -26,8 +20,7 @@ v0.2.0
   - archive a file if it exists, using datetimestamp
 
 
-Older versions
---------------
+## Older versions
 
 - Print output in columns
 - Datetime formatting
