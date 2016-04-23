@@ -10,6 +10,9 @@ import pytz
 # Formatting
 
 def unix_to_string(timestamp, dt_format='%Y-%m-%d %H:%M:%S'):
+    """
+    Convert unix timestamp to a (human) readable string
+    """
     return datetime.fromtimestamp(int(timestamp)).strftime(dt_format)
 
 
@@ -25,7 +28,9 @@ def unix_to_python(timestamp):
 
 
 def python_to_unix(timestamp):
-    "Return POSIX timestamp as float"
+    """
+    Return POSIX timestamp as float
+    """
     return mktime(timestamp.timetuple())
 
 
