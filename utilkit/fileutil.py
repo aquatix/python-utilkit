@@ -86,6 +86,15 @@ def list_files(dirname, extension=None):
     return f
 
 
+def filename_addstring(filename, text):
+    """
+    Add `text` to filename, keeping the extension in place
+    For example when adding a timestamp to the filename
+    """
+    fn, ext = os.path.splitext(filename)
+    return fn + text + ext
+
+
 def get_file_contents(filename):
     """
     Read file contents from file `filename`
