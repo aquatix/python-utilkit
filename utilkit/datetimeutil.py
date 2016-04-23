@@ -24,6 +24,18 @@ def unix_to_python(timestamp):
         return datetime.utcfromtimestamp(float(timestamp))
 
 
+def python_to_unix(timestamp):
+    "Return POSIX timestamp as float, taken from Python 3.3 source"
+    _EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
+
+    if hasattr(timestamp, '_tzinfo') and timestamp._tzinfo is None:
+        return _time.mktime((timestamp.year, timestamp.month, timestamp.day,
+                             timestamp.hour, timestamp.minute, timestamp.second,
+                             -1, -1, -1)) + timestamp.microsecond / 1e6
+    else:
+        return (timestamp - _EPOCH).total_seconds()
+
+
 def datetime_to_string(timestamp, dt_format='%Y-%m-%d %H:%M:%S'):
     """
     Format datetime object to string
