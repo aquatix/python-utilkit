@@ -9,9 +9,10 @@ import yaml
 from collections import OrderedDict
 
 
-def copytree(src, dst, symlinks = False, ignore = None):
+def copytree(src, dst, symlinks=False, ignore=None, rename=None):
     """
     Copy a tree of files and dirs and merge into existing dir if needed
+    Optionally rename items with names in the `rename` dict
     Source: http://stackoverflow.com/a/22331852
     """
     if not os.path.exists(dst):
@@ -24,6 +25,8 @@ def copytree(src, dst, symlinks = False, ignore = None):
     for item in lst:
         s = os.path.join(src, item)
         d = os.path.join(dst, item)
+        if rename and item in rename:
+            d = os.path.join(dst, rename[item])
         if symlinks and os.path.islink(s):
             if os.path.lexists(d):
                 os.remove(d)
@@ -35,7 +38,7 @@ def copytree(src, dst, symlinks = False, ignore = None):
             except:
                 pass # lchmod not available
         elif os.path.isdir(s):
-            copytree(s, d, symlinks, ignore)
+            copytree(s, d, symlinks, ignore, rename)
         else:
             shutil.copy2(s, d)
 
