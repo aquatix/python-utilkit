@@ -4,6 +4,9 @@
 
 - List files in directory, optionally filter on extension
 - Ordered yaml loader (uses OrderedDict for output)
+- Python datetime to unix timestamp
+- `filename_addstring` function to add a string to a filename without having to hassle with the extension
+- Rename option on copytree, which renames all filename matches in the `rename` dict to their destination
 
 
 ## v0.2.0
