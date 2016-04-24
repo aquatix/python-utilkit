@@ -18,7 +18,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='utilkit', # pip install utilkit
-    description='Collection of useful helper functions for datetime, print, string formatting and more',
+    description='Collection of useful helper functions for datetime, print, string formatting, directory and file handling, and more',
     #long_description=open('README.md', 'rt').read(),
     long_description=long_description,
 
@@ -30,7 +30,7 @@ setup(
     author='Michiel Scholten',
     author_email='michiel@diginaut.net',
 
-    url='https://github.com/aquatix/python-utilkit/',
+    url='https://github.com/aquatix/python-utilkit',
     license='MIT',
 
     # as a practice no need to hard code version unless you know program wont
