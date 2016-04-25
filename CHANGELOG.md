@@ -1,6 +1,13 @@
-## v0.3.0 (unreleased)
+## v0.4.0 (unreleased)
 
-2016-04-??
+2016-05-??
+
+- TODO
+
+
+## v0.3.0
+
+2016-04-25
 
 - List files in directory, optionally filter on extension
 - Ordered yaml loader (uses OrderedDict for output)
