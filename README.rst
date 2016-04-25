@@ -4,7 +4,7 @@ python-utilkit
 
 Some useful functions and usability that should be shared between your apps.
 
-|PyPI version| |PyPI downloads| |PyPI license|
+|PyPI version| |PyPI downloads| |PyPI license| |pyversions|
 
 Repo: `<https://github.com/aquatix/python-utilkit/>`_
 
@@ -59,6 +59,7 @@ What's new?
 See the `Changelog`_.
 
 
+.. _python-utilkit: https://pypi.python.org/pypi/python-utilkit
 .. |PyPI version| image:: https://img.shields.io/pypi/v/utilkit.svg
    :target: https://pypi.python.org/pypi/utilkit/
 .. |PyPI downloads| image:: https://img.shields.io/pypi/dm/utilkit.svg
@@ -66,3 +67,6 @@ See the `Changelog`_.
 .. |PyPI license| image:: https://img.shields.io/github/license/aquatix/python-utilkit.svg
    :target: https://pypi.python.org/pypi/utilkit/
 .. _Changelog: https://github.com/aquatix/python-utilkit/blob/master/CHANGELOG.md
+.. |pyversions| image:: https://img.shields.io/pypi/pyversions/python-utilkit.svg
+.. |version| image:: https://img.shields.io/pypi/v/python-utilkit.svg
+   :target: `python-utilkit`_
