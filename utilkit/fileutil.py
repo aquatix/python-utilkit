@@ -33,7 +33,7 @@ def copytree(src, dst, symlinks=False, ignore=None, rename=None):
             os.symlink(os.readlink(s), d)
             try:
                 st = os.lstat(s)
-                mode = stat.S_IMODE(st.st_mode)
+                mode = os.stat.S_IMODE(st.st_mode)
                 os.lchmod(d, mode)
             except:
                 pass # lchmod not available

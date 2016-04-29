@@ -1,6 +1,7 @@
 """
 Version checking utilities
 """
+import requests
 
 ## Check for an update of the notifier
 def get_repo_version(url):

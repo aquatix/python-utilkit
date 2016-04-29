@@ -139,8 +139,8 @@ def x_vs_y(collection_x, collection_y, title_x=None, title_y=None, width=43, fil
         #result.append([item, str(data[item]['x']) + '|' + str(data[item]['y'])])
         bins_x = int((float(data[item]['x']) / float(max_value)) * bins_total) + 1
         bins_y = int((float(data[item]['y']) / float(max_value)) * bins_total) + 1
-        print bins_x
-        print bins_y
+        print(bins_x)
+        print(bins_y)
         #result.append([item, str(data[item]['x']), str(data[item]['y'])])
         result.append([item, '*' * bins_x, '*' * bins_y])
     result = to_smart_columns(result, headers=headers)
