@@ -60,7 +60,7 @@ def ensure_dir_exists(f, fullpath=False):
     """
     Ensure the existence of the (parent) directory of f
     """
-    if fullpath == False:
+    if fullpath is False:
         # Get parent directory
         d = os.path.dirname(f)
     else:
@@ -78,7 +78,7 @@ def list_files(dirname, extension=None):
     for (dirpath, dirnames, filenames) in os.walk(dirname):
         f.extend(filenames)
         break
-    if extension != None:
+    if extension is not None:
         # Filter on extension
         filtered = []
         for filename in f:

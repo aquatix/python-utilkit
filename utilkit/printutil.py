@@ -129,7 +129,7 @@ def x_vs_y(collection_x, collection_y, title_x=None, title_y=None, width=43, fil
     max_value = get_max_x_y(data)
     bins_total = int(float(max_value) / width) + 1
 
-    if title_x != None and title_y != None:
+    if title_x is not None and title_y is not None:
         headers = [title_x, title_y]
     else:
         headers = None
