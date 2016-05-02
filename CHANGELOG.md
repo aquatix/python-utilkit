@@ -2,7 +2,8 @@
 
 2016-05-??
 
-- TODO
+- Some minor bugfixes and style improvements
+- Added missing dependency on PyYAML
 
 
 ## v0.3.0
