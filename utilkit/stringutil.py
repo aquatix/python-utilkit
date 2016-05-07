@@ -1,7 +1,6 @@
 """
 String/unicode helper functions
 """
-import unicode
 
 def safe_unicode(obj, *args):
     """ return the unicode representation of obj """
