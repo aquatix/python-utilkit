@@ -4,6 +4,7 @@
 
 - Some minor bugfixes and style improvements
 - Added missing dependency on PyYAML
+- Shannon entropy calculator
 
 
 ## v0.3.0
