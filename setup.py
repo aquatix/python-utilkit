@@ -35,7 +35,7 @@ setup(
 
     # as a practice no need to hard code version unless you know program wont
     # work unless the specific versions are used
-    install_requires=['requests', 'pytz', 'future', 'PyYAML'],
+    install_requires=['requests', 'pytz', 'future'],
 
     packages=['utilkit'],
     #py_modules=['utilkit'],

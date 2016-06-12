@@ -1,10 +1,11 @@
 ## v0.4.0 (unreleased)
 
-2016-05-??
+2016-06-??
 
 - Some minor bugfixes and style improvements
-- Added missing dependency on PyYAML
 - Shannon entropy calculator
+- Only depend on yaml when the functionality is actually needed
+- Added note on dependency on PyYAML when using yaml
 
 
 ## v0.3.0

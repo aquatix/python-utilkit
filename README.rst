@@ -20,6 +20,9 @@ Assuming you already are inside a virtualenv:
 
     pip install utilkit
 
+If you want to use yaml-related functionality (like fileutil.yaml_ordered_load), please also install PyYAML through `pip install PyYAML`. This is not istalled by default to keep the dependencies limited.
+
+
 From Git
 ~~~~~~~~
 
