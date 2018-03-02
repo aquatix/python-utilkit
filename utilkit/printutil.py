@@ -1,7 +1,7 @@
 """
 Printing helper functions, for pretty printing/formatting of data and more
 """
-import datetimeutil
+from . import datetimeutil
 
 def to_even_columns(data, headers=None):
     """

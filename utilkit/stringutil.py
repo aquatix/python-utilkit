@@ -10,7 +10,14 @@ def safe_unicode(obj, *args):
     except UnicodeDecodeError:
         # obj is byte string
         ascii_text = str(obj).encode('string_escape')
-        return unicode(ascii_text)  # noqa for undefined-variable
+        try:
+            return unicode(ascii_text)  # noqa for undefined-variable
+        except NameError:
+            # This is Python 3, just return the obj as it's already unicode
+            return obj
+    except NameError:
+        # This is Python 3, just return the obj as it's already unicode
+        return obj
 
 
 def safe_str(obj):
@@ -19,7 +26,11 @@ def safe_str(obj):
         return str(obj)
     except UnicodeEncodeError:
         # obj is unicode
-        return unicode(obj).encode('unicode_escape')  # noqa for undefined-variable
+        try:
+            return unicode(obj).encode('unicode_escape')  # noqa for undefined-variable
+        except NameError:
+            # This is Python 3, just return the obj as it's already unicode
+            return obj
 
 
 def range_bytes():
