@@ -23,8 +23,7 @@ def unix_to_python(timestamp):
     # Not sure how correct this is to do here, but return 'null' if the timestamp provided is 0
     if int(timestamp) == 0:
         return None
-    else:
-        return datetime.utcfromtimestamp(float(timestamp))
+    return datetime.utcfromtimestamp(float(timestamp))
 
 
 def python_to_unix(timestamp):
@@ -57,9 +56,8 @@ def tuple_to_string(date_tuple):
     if len(date_tuple) == 2:
         # It's yyyy-mm
         return str(date_tuple[0]).zfill(4) + '-' + str(date_tuple[1]).zfill(2)
-    elif len(date_tuple) == 3:
-        # It's yyyy-mm-dd
-        return str(date_tuple[0]).zfill(4) + '-' + str(date_tuple[1]).zfill(2) + '-' + str(date_tuple[2]).zfill(2)
+    # It's yyyy-mm-dd
+    return str(date_tuple[0]).zfill(4) + '-' + str(date_tuple[1]).zfill(2) + '-' + str(date_tuple[2]).zfill(2)
 
 
 # Timezone helpers
